@@ -1,3 +1,5 @@
+import sys
+
 def printLol(aList, indent=False, level=0, filePath=sys.stdout):
 	for item in aList:
 		if isinstance(item,list):
@@ -5,5 +7,5 @@ def printLol(aList, indent=False, level=0, filePath=sys.stdout):
 		else:
 			if indent:
 				for eachTabStop in range(level):
-					print>>"\t",filePath
-			print>>item,filePath
+					print("\t",filePath)
+			print(item,filePath)

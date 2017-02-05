@@ -65,6 +65,109 @@
 #########################################################
 # version 4
 
+# man = []
+# other = []
+# try:
+# 	data = open("sketch.txt")
+# 	for each_line in data:
+# 		try:
+# 			(role, line_spoken) = each_line.split(":",1)
+# 			line_spoken = line_spoken.strip()
+# 			if role == "Man":
+# 				man.append(line_spoken)
+# 			else:
+# 				other.append(line_spoken)
+# 		except ValueError:
+# 			pass
+# 	data.close()
+# except IOError:
+# 	print("The datafile is missing!")
+
+# try:
+# 	man_file = open("man_data.txt","w")
+# 	other_file = open("other_data.txt","w")
+
+# 	# 这个是 python 3 的写法
+# 	# print(man, file = man_file)
+# 	# print(other, file = other_file)
+
+# 	# 这个是 python 2 的写法
+# 	print>>man_file,man
+# 	print>>other_file,other
+
+# 	man_file.close()
+# 	other_file.close()
+# except IOError:
+# 	print("file error",)
+
+#########################################################
+# version 5
+
+# man = []
+# other = []
+# try:
+# 	data = open("sketch.txt")
+# 	for each_line in data:
+# 		try:
+# 			(role, line_spoken) = each_line.split(":",1)
+# 			line_spoken = line_spoken.strip()
+# 			if role == "Man":
+# 				man.append(line_spoken)
+# 			else:
+# 				other.append(line_spoken)
+# 		except ValueError:
+# 			pass
+# 	data.close()
+# except IOError:
+# 	print("The datafile is missing!")
+
+# try:
+# 	man_file = open("man_data.txt","w")
+# 	other_file = open("other_data.txt","w")
+# 	print>>man_file,man
+# 	print>>other_file,other
+# except IOError as error:
+# 	print("File error: " + str(error),)
+# finally:
+# 	if 'man_file' in locals():
+# 		man_file.close
+# 	if 'other_file' in locals():
+# 		other_file.close
+
+#########################################################
+# version 6
+
+# man = []
+# other = []
+# try:
+# 	data = open("sketch.txt")
+# 	for each_line in data:
+# 		try:
+# 			(role, line_spoken) = each_line.split(":",1)
+# 			line_spoken = line_spoken.strip()
+# 			if role == "Man":
+# 				man.append(line_spoken)
+# 			else:
+# 				other.append(line_spoken)
+# 		except ValueError:
+# 			pass
+# 	data.close()
+# except IOError:
+# 	print("The datafile is missing!")
+
+# try:
+# 	with open("man_data.txt","w") as man_file, open("other_data.txt","w") as other_file:
+# 		print>>man_file,man
+# 		print>>other_file,other
+# except IOError as error:
+# 	print("File error: " + str(error),)
+
+#########################################################
+# version 7
+
+import nester
+import sys
+
 man = []
 other = []
 try:
@@ -81,27 +184,16 @@ try:
 			pass
 	data.close()
 except IOError:
-	print("The datafile is missing!")
+	print>>"The datafile is missing!"
 
 try:
-	man_file = open("man_data.txt","w")
-	other_file = open("other_data.txt","w")
-
-	# print(man, file = man_file)
-	# print(other, file = other_file)
-	print>>man_file,man
-	print>>other_file,other
-	# man_file.write(man)
-	# other_file.write(other)
-
-	man_file.close()
-	other_file.close()
-except IOError:
-	print("file error",)
-
-
-
-
+	with open("man_data.txt","w") as man_file, open("other_data.txt","w") as other_file:
+		# print>>man_file,man
+		nester.printLol(man, man_file)
+		# print>>other_file,other
+		nester.printLol(other, other_file)
+except IOError as error:
+	print>>"File error: " + str(error)
 
 
 
